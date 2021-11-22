@@ -1,0 +1,22 @@
+{
+  "name": "chat-react-backend",
+  "version": "1.0.0",
+  "description": "chat demo app for test websockets",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "nodemon": "nodemon --exec"
+  },
+  "keywords": [
+    "websockets",
+    "chat"
+  ],
+  "author": "Cesar Palma <cemp2703@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^7.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

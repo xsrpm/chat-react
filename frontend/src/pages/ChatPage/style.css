@@ -1,0 +1,36 @@
+.ChatPage {
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+  grid-template-rows: 10% 1fr 10% 5%;
+  grid-template-areas:
+    'header header'
+    'messages online'
+    'message send'
+    'logout logout';
+  background-color: white;
+}
+
+.ChatPage h1 {
+  grid-area: header;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ChatPage__messages {
+  grid-area: messages;
+  border-style: inset;
+}
+.ChatPage__online {
+  grid-area: online;
+  border-style: outset;
+}
+.ChatPage__message {
+  grid-area: message;
+}
+.ChatPage__btnSend {
+  grid-area: send;
+}
+.ChatPage__btnLogout {
+  grid-area: logout;
+}
