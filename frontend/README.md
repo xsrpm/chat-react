@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# ¿Para que es este repositorio?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend para chat
 
-## Available Scripts
+# Dependencias de Desarrollo
 
-In the project directory, you can run:
+- IDE: Visual Studio Code
 
-### `npm start`
+# Dependencias de Ejecución
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Browser: Firefox/Chrome/Edge
+- Backend de chat
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Fuente
 
-### `npm test`
+https://javascript.info/websocket
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Anexo
 
-### `npm run build`
+Referencia para estructura de proyecto y automatización de workflow con nodejs y parcel
+https://www.youtube.com/watch?v=8rD9amRSOQY
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Variables de entorno
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Forma de setear variables de entorno para la terminal en ejecución y luego otros: https://www.youtube.com/watch?v=U6st9-lNUyY
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- export PORT=4000 (en linux)
+- set PORT=4000 (en windows)
 
-### `npm run eject`
+## Usando dotenv y otros para gestionarlo dentro de nodejs
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html
+- https://robertcooper.me/post/front-end-javascript-environment-variables https://parceljs.org/env.html
