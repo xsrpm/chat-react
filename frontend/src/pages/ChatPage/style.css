@@ -1,12 +1,10 @@
 .ChatPage {
   display: grid;
-  grid-template-columns: 8fr 1fr;
-  grid-template-rows: 10% 1fr 10% 5%;
+  grid-template-rows: auto 1fr auto;
   grid-template-areas:
-    'header header'
-    'messages online'
-    'message send'
-    'logout logout';
+    'header'
+    'main'
+    'logout';
   background-color: white;
 }
 
@@ -16,7 +14,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  block-size: 80px;
 }
+
+.ChatPage form {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+  grid-template-rows: 8fr 1fr;
+  grid-template-areas:
+    'messages online'
+    'message send';
+}
+
 .ChatPage__messages {
   grid-area: messages;
   border-style: inset;
@@ -33,4 +43,5 @@
 }
 .ChatPage__btnLogout {
   grid-area: logout;
+  block-size: 40px;
 }

@@ -5,3 +5,10 @@
   align-items: center;
   background-color: white;
 }
+
+.WelcomePage form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

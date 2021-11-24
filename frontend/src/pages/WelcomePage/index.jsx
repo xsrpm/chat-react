@@ -1,33 +1,30 @@
 import './style.css'
 
-export const WelcomePage = ({ visible, pageChange }) => {
-  const onClick = () => {
-    /*
-    let outgoingMessage = JSON.stringify({
-      event: "new-login",
-      payload: {
-        nick: nick.value,
-        message: "Connected",
-      },
-    });
-    socket.send(outgoingMessage)
-    */
-    pageChange('chat')
+export const WelcomePage = ({ visible, setNick, nick, joinRoom }) => {
+  const onSubmit = (e) => {
+    e.preventDefault()
+    if (e.target[0].value.length > 0) {
+      joinRoom()
+    }
+  }
+  const onChange = (e) => {
+    setNick(e.target.value)
   }
   if (!visible) return null
   return (
     <section className='WelcomePage'>
-      <h1>Chat</h1>
-      <p>
-        <label>
-          Nick: <input type='text' id='nick' />
-        </label>
-      </p>
-      <p>
-        <button id='btnLogin' onClick={onClick}>
-          Ingresar
-        </button>
-      </p>
+      <form onSubmit={onSubmit}>
+        <h1>Chat</h1>
+        <p>
+          <label>
+            Nick:{' '}
+            <input value={nick} onChange={onChange} type='text' required />
+          </label>
+        </p>
+        <p>
+          <button id='btnLogin'>Ingresar</button>
+        </p>
+      </form>
     </section>
   )
 }

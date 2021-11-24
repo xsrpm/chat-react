@@ -30,4 +30,5 @@ Forma de setear variables de entorno para la terminal en ejecución y luego otro
 ## Usando dotenv y otros para gestionarlo dentro de nodejs
 
 - https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html
-- https://robertcooper.me/post/front-end-javascript-environment-variables https://parceljs.org/env.html
+- https://robertcooper.me/post/front-end-javascript-environment-variables
+- https://stackoverflow.com/questions/42182577/is-it-possible-to-use-dotenv-in-a-react-project

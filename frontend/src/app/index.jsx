@@ -2,6 +2,7 @@ import './style.css'
 import { WelcomePage } from '../pages/WelcomePage'
 import { ChatPage } from '../pages/ChatPage'
 import { usePageVisibility } from './usePageVisibility'
+import { useState } from 'react'
 
 function App() {
   const [pageVisibility, pageChange] = usePageVisibility([
@@ -9,81 +10,104 @@ function App() {
     { name: 'chat', visibility: false }
   ])
 
-  let url = `${process.env.WEBSOCKET_URL}/ws`
-  let socket
+  const [nick, setNick] = useState('')
+  const [nicksInRoom, setNicksInRoom] = useState([])
+  const [messages, setMessages] = useState([])
+  const [socket, setSocket] = useState(undefined)
+  let url = `${process.env.REACT_APP_WEBSOCKET_URL}/ws`
 
-  const openSocket = () => {
-    socket = new WebSocket(url)
-    // handle incoming messages
-
+  function joinRoom() {
+    console.log(url)
+    let socket = new WebSocket(url)
     socket.onopen = function (event) {
       console.log('connected')
+      let outgoingMessage = JSON.stringify({
+        event: 'new-login',
+        payload: {
+          nick,
+          message: 'Connected'
+        }
+      })
+      socket.send(outgoingMessage)
     }
     socket.onerror = function (event) {
       console.log(event)
     }
     socket.onmessage = function (event) {
-      showMessage(event.data)
+      console.log('socket onmessage')
+      let data = JSON.parse(event.data)
+      switch (data.event) {
+        case 'new-login':
+          document.title = nick
+          console.log('new-login:' + data.payload.nicks)
+          setNicksInRoom(data.payload.nicks)
+          pageChange('chat')
+          break
+        case 'send-new-message':
+          console.log(data)
+          //appendNewMessage(data)
+          setMessages((messages) => {
+            return [
+              ...messages,
+              `${data.payload.nick}: ${data.payload.message}`
+            ]
+          })
+          break
+        case 'update-nick-list':
+          setNicksInRoom(data.payload.nicks)
+          break
+        case 'update-new-message':
+          //appendNewMessage(data)
+          console.log(data)
+          setMessages((messages) => {
+            return [
+              ...messages,
+              `${data.payload.nick}: ${data.payload.message}`
+            ]
+          })
+          break
+        default:
+          console.log('default show message')
+          break
+      }
     }
 
     socket.onclose = (event) => console.log(`Closed ${event.code}`)
+    setSocket(socket)
   }
 
-  const showMessage = (dataStr) => {
-    let data = JSON.parse(dataStr)
-    switch (data.event) {
-      case 'new-login':
-        /*
-        messages.innerHTML = ''
-        message.value = ''
-        document.title = nick.value
-        updateNickList(data)
-        
-        changeSection('chat')
-        */
-        break
-      case 'send-new-message':
-        //message.value = ''
-        //appendNewMessage(data)
-        break
-      case 'update-nick-list':
-        //updateNickList(data)
-        break
-      case 'update-new-message':
-        //appendNewMessage(data)
-        break
-      default:
-        console.log('default show message')
-        break
-    }
-  }
-  /*
-  const appendNewMessage = (data) => {
-    let messageElem = document.createElement('div')
-    messageElem.textContent = `${data.payload.nick}: ${data.payload.message}`
-    document.getElementById('messages').append(messageElem)
+  function sendMessage(message) {
+    let outgoingMessage = JSON.stringify({
+      event: 'send-new-message',
+      payload: {
+        nick,
+        message
+      }
+    })
+    socket.send(outgoingMessage)
   }
 
-  const updateNickList = (data) => {
-    let listItem
-    console.log(data.payload.nicks)
-    onlineList.innerHTML = ''
-    for (let n of data.payload.nicks) {
-      listItem = document.createElement('p')
-      listItem.innerText = n
-      onlineList.append(listItem)
-    }
+  function leaveRoom() {
+    socket.close(1000, 'close chat')
+    setMessages([])
+    pageChange('welcome')
   }
-*/
   return (
     <>
       <WelcomePage
         visible={pageVisibility[0].visibility}
-        pageChange={pageChange}
+        setNick={setNick}
+        joinRoom={joinRoom}
+        setSocket={setSocket}
       />
       <ChatPage
         visible={pageVisibility[1].visibility}
         pageChange={pageChange}
+        socket={socket}
+        leaveRoom={leaveRoom}
+        sendMessage={sendMessage}
+        nicksInRoom={nicksInRoom}
+        messages={messages}
       />
     </>
   )
