@@ -14,7 +14,9 @@
   "author": "Cesar Palma <cemp2703@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "ws": "^7.4.0"
+    "ws": "^7.4.0",
+    "express": "4.17.1",
+    "cors": "2.8.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

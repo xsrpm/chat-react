@@ -34,7 +34,7 @@ export function useChatRoom() {
       let data = JSON.parse(event.data)
       switch (data.event) {
         case 'new-login':
-          document.title = nick
+          document.title = `Chat React - ${nick}`
           console.log('new-login:' + data.payload.nicks)
           setNicksInRoom(data.payload.nicks)
           pageChange('chat')
@@ -86,6 +86,7 @@ export function useChatRoom() {
   function leaveRoom() {
     socket.close(1000, 'close chat')
     setMessages([])
+    document.title = 'Chat React'
     pageChange('welcome')
   }
   return [
