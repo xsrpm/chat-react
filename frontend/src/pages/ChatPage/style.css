@@ -20,7 +20,7 @@
 .ChatPage form {
   grid-area: main;
   display: grid;
-  grid-template-columns: 8fr 1fr;
+  grid-template-columns: 3fr 1fr;
   grid-template-rows: 8fr 1fr;
   grid-template-areas:
     'messages online'
