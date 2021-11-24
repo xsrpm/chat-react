@@ -2,14 +2,11 @@
 
 Frontend para chat
 
-# Dependencias de Desarrollo
-
-- IDE: Visual Studio Code
-
 # Dependencias de Ejecución
 
 - Browser: Firefox/Chrome/Edge
 - Backend de chat
+- Se requiere la direccion del backend en la variable: REACT_APP_WEBSOCKET_URL como variable de entorno
 
 # Fuente
 
@@ -26,6 +23,7 @@ Forma de setear variables de entorno para la terminal en ejecución y luego otro
 
 - export PORT=4000 (en linux)
 - set PORT=4000 (en windows)
+- Se requiere la direccion del backend en la variable: REACT_APP_WEBSOCKET_URL en un archivo .env
 
 ## Usando dotenv y otros para gestionarlo dentro de nodejs
 
